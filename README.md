@@ -7,7 +7,7 @@ First clone the project
 
 Go to the `gui` folder 
 
-`cd AES/gui` 
+`cd gui` 
 
 Install the dependencies 
 
