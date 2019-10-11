@@ -1,0 +1,56 @@
+/* 
+font                    : Roboto, Sans-serif
+greenish blue           : #34c6d3 ()
+steel gray              : #41464b (Heading)
+blue bayoux             : #64707b (paragraph)
+white                   : #fff
+black                   : #000
+*/
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.input-general {
+    width: 100%;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 0;
+    padding: 12px, 26px, 12px, 26px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.btn-general {
+    width: 100%;
+    border-width: 2px;
+    border-radius: 0;
+    padding: 12px, 26px, 12px, 26px;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.btn-white {
+    border-color: black;
+    color: white;
+}
+
+.btn-white:hover, 
+.btn-white:focus{
+    background-color: rgb(114, 114, 114);
+    color: #41464b;
+}
+
+.top-section{
+    margin: 20px 0;
+}
+
+.mlabel {
+    font-size: 20px;
+    font-weight: 400;
+}
