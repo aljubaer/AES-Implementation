@@ -1,6 +1,8 @@
+var ps = require("python-shell");
+var path = require("path");
+
 function getSimpleResponse() {
-    var ps = require("python-shell");
-    var path = require("path");
+
 
     var inputMessage = "This is a test input";
     inputMessage = document.getElementById("plainTextMessage").value;
@@ -25,4 +27,31 @@ function getSimpleResponse() {
         console.log(message);
         document.getElementById("responseText").value = "The response here -> " + message;
     });
+}
+
+function encryptionHandler() {
+    var options = {
+        scriptPath: path.join(__dirname, '/../engine/')
+    };
+
+    ps.PythonShell.run('aes_encrypt.py', options, function (err, results) {
+        if (err) throw err;
+        // results is an array consisting of messages collected during execution
+        console.log('results: %j', results);
+    });
+
+}
+
+
+function decryptionHandler() {
+    var options = {
+        scriptPath: path.join(__dirname, '/../engine/')
+    };
+
+    ps.PythonShell.run('aes_decrypt.py', options, function (err, results) {
+        if (err) throw err;
+        // results is an array consisting of messages collected during execution
+        console.log('results: %j', results);
+    });
+
 }

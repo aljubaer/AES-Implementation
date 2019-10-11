@@ -1,18 +1,18 @@
 {
-  "name": "aes",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "aljubaer",
-  "license": "ISC",
-  "devDependencies": {
-    "electron": "^6.0.10"
-  },
-  "dependencies": {
-    "python-shell": "^1.0.8"
-  }
+    "name": "aes_gui",
+    "version": "1.0.0",
+    "description": "Simple AES implementatio in Python",
+    "main": "index.js",
+    "scripts": {
+        "start": "electron .",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "electron": "^6.0.12"
+    },
+    "dependencies": {
+        "python-shell": "^1.0.8"
+    }
 }
