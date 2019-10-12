@@ -15,7 +15,7 @@ function createWindow() {
     });
 
     // and load the index.html of the app.
-    win.loadFile("main-frame.html");
+    win.loadFile("index.html");
 
     // Open the DevTools.
     win.webContents.openDevTools();
