@@ -1,1 +1,11 @@
 **/node_modules
+AES-Implementation-App.iml
+.idea/.gitignore
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+engine/__pycache__/aes_helper.cpython-37.pyc
+gui/aes.txt
+gui/text.txt
+AES-Implementation-App.iml
+__pycache__
