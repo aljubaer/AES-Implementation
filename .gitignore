@@ -9,3 +9,4 @@ gui/aes.txt
 gui/text.txt
 AES-Implementation-App.iml
 __pycache__
+aes-win32-x64
