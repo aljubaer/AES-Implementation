@@ -114,7 +114,7 @@ function getInputFileForDecrypt() {
         console.log(result.filePaths[0]);
         document.getElementById("deFileInput").value = result.filePaths[0];
 
-        fs.readFile(result.filePaths[0], 'utf-8', (err, data) => {
+        fs.readFile(result.filePaths[0], (err, data) => {
             if (err) {
                 alert("An error ocurred reading the file :" + err.message);
                 return;

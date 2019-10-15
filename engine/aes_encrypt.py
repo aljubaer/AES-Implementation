@@ -15,7 +15,7 @@ def encrypt(message, key, keylen=16, save_file_name='aes.bin', mode='ecb', initi
     aes_mode = aes_modes.get_mode(mode)
     encrypted_text = aes_mode.encrypt(message, expanded_key, num_of_rounds, iv)
 
-    print(encrypted_text)
+    # print(encrypted_text)
     # print(len(encrypted_text))
     write = open("encrypt.bin", 'wb+')
     write.write(str.encode(encrypted_text))
@@ -31,4 +31,5 @@ if __name__ == '__main__':
         outputFile = data['outputFile']
         mode = data['aes_mode']
         iv = data['iv']
-        encrypt(message, key, 16, outputFile, mode, iv)
+        print(message)
+        encrypt(message, key, int(keylen/8), outputFile, mode, iv)

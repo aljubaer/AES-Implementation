@@ -26,7 +26,7 @@ def decrypt(encrypted_message, key, keylen=16, save_file_name='aes_decrypt.txt',
 
 
 if __name__ == '__main__':
-    with open('en_input.json') as f:
+    with open('de_input.json') as f:
         data = json.load(f)
         key = data['key']
         keylen = int(data['keylen'])
@@ -34,4 +34,4 @@ if __name__ == '__main__':
         mode = data['aes_mode']
         iv = data['iv']
         file = open('aes_tmp.bin', 'rb')
-        print(decrypt(file.read().decode(), key, 16, outputFile, mode, iv))
+        print(decrypt(file.read().decode(), key, int(keylen/8), outputFile, mode, iv))
