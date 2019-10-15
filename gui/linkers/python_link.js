@@ -29,18 +29,18 @@ function getSimpleResponse() {
     });
 }
 
-function encryptionHandler() {
+module.exports.encryptLink = function encryptionHandler() {
     var options = {
         scriptPath: path.join(__dirname, '/../engine/')
     };
 
-    ps.PythonShell.run('aes_encrypt.py', options, function (err, results) {
+    ps.PythonShell.run('python-engine.py', options, function (err, results) {
         if (err) throw err;
         // results is an array consisting of messages collected during execution
         console.log('results: %j', results);
     });
 
-}
+};
 
 
 function decryptionHandler() {

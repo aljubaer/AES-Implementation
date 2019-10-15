@@ -1,7 +1,9 @@
 import sys
+import json
 
-inputText = sys.argv[1]
-inputKey = sys.argv[2]
+with open('en_input.json') as f:
+    data = json.load(f)
 
-print("Response from python engine: \n" + "Text: " + inputText + "\n" + "Key: " + inputKey)
+print(data)
+
 sys.stdout.flush()

@@ -183,7 +183,7 @@ def key_expansion_core(key, i):
     key[0] = key[1]
     key[1] = key[2]
     key[2] = key[3]
-    key[3] = t;
+    key[3] = t
 	# S-box 4 bytes 
     key[0] = s_box[key[0]]
     key[1] = s_box[key[1]]
@@ -216,7 +216,7 @@ def key_expansion(input_key):
         expanded_keys[i] = input_key[i]
 
     bytes_generated = len(input_key) # Bytes we've generated so far
-    r_con_iteration = 1; # Keeps track of rcon value
+    r_con_iteration = 1 # Keeps track of rcon value
     tmp_core = [i for i in range(4)] # Temp storage for core, size 4
 
     while bytes_generated < final_key_size:

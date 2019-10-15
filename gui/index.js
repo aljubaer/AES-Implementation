@@ -7,18 +7,19 @@ let win;
 function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1200,
+        height: 810,
         webPreferences: {
             nodeIntegration: true
         }
     });
 
     // and load the index.html of the app.
-    win.loadFile("index.html");
+    win.loadFile("main.html");
 
     // Open the DevTools.
     win.webContents.openDevTools();
+    win.removeMenu();
 
     // Emitted when the window is closed.
     win.on("closed", () => {

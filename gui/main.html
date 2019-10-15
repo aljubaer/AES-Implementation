@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/style.css">
-    <script src='linkers/file_handler.js'></script>
+    <script src='linkers/input_handler.js'></script>
     <script src='linkers/python_link.js'></script>
 </head>
 
@@ -19,25 +19,43 @@
         </div>
 
         <div class="col-md-5 col-sm-6 col-xs-12">
-            <form class=" form">
+            <form class="form">
                 <h2>AES Encryption </h2>
                 <div class="form-group">
-                    <label for="inputString">Enter text to be Encrypted</label>
-                    <textarea id="inputString" class="form-control input-lg" rows="5"
+                    <label for="enInputString">Enter text to be Encrypted</label>
+                    <textarea id="enInputString" class="form-control input-lg input-general" rows="3"
                         placeholder="Enter plain text to hash" name="textToEncrypt"></textarea>
                     OR<br>
-                    <input class="form-control input-lg" id="fileInput" type="file" name="fileInput">
+                    <!-- <input class="form-control input-lg" id="fileInput" type="file" name="fileInput"> -->
+                    <div class="row">
+                        <div class="col-md-3" style="padding-right: 0px">
+                            <div id="choose-btn">
+                                <a class="btn btn-general btn-white" role="button"
+                                    onclick="getInputFileForEncrypt()">Choose file</a>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control input-general" id="enFileInput"
+                                    placeholder="Your file name">
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="mode">Select Mode</label>
-                    <select class="form-control input-lg" id="mode">
+                    <select class="form-control input-lg input-general" id="mode">
                         <option value="ECB" selected="">ECB</option>
                         <option value="CBC">CBC</option>
+                        <option value="CFB">CFB</option>
+                        <option value="OFB">OFB</option>
+
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="keysize">Key Size in Bits</label>
-                    <select class="form-control input-lg id=" keysize">
+                    <select class="form-control input-lg input-general" id="keysize">
                         <option value="128" selected="">128</option>
                         <option value="192">192</option>
                         <option value="256">256</option>
@@ -45,26 +63,24 @@
                 </div>
                 <div class="form-group">
                     <label for="encryptivinput">Enter IV (Optional)</label>
-                    <input class="form-control input-lg" id="encryptivinput" placeholder="Enter initialization vector"
-                        name="encryptivinput">
+                    <input class="form-control input-lg input-general" id="encryptivinput"
+                        placeholder="Enter initialization vector" name="encryptivinput">
                 </div>
                 <div class="form-group">
                     <label for="secretkey">Enter Secret Key</label>
-                    <input class="form-control input-lg" id="secretkey" placeholder="Enter secret key" name="secretkey">
+                    <input class="form-control input-lg input-general" id="secretkey" placeholder="Enter secret key"
+                        name="secretkey">
                 </div>
 
-                <!-- <label>Output Text Format:</label>
-                <input type="radio" value="Base64" name="3">Base64
-                <input type="radio" value="Hex" name="4">Hex -->
             </form>
             <div class="form-group">
-                <button class="btn btn-primary" name="hash" value="hash">Encrypt
-                </button>
+                <button class="btn btn-primary btn-general" name="hash" value="hash"
+                    onclick="onEncryptHandler()">Encrypt</button>
             </div>
 
             <div class="form-group">
                 <label for="outputString">AES Encrypted Output:</label>
-                <textarea id="outputString" class="form-control input-lg" rows="5"
+                <textarea id="outputString" class="form-control input-lg input-general" rows="3"
                     placeholder="Encrypted text goes here"></textarea>
             </div>
 
@@ -76,27 +92,41 @@
                 <h2>AES Decryption </h2>
                 <div class="form-group">
                     <label for="dinputString">Enter text to be Decrypted</label>
-                    <textarea id="dinputString" class="form-control input-lg" rows="5"
+                    <textarea id="dinputString" class="form-control input-lg input-general" rows="3"
                         placeholder="Enter text to Decrypt" name="textToDecrypt"></textarea>
                     OR<br>
-                    <input class="form-control input-lg" id="dfileInput" type="file" name="dfileInput">
-                </div>
+                    <!-- <input class="form-control input-lg" id="dfileInput" type="file" name="dfileInput" -->
+                    <div class="row">
+                        <div class="col-md-3" style="padding-right: 0px">
+                            <div id="choose-btn">
+                                <a class="btn btn-general btn-white" role="button"
+                                    onclick="getInputFileForDecrypt()">Choose file</a>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control input-general" id="deFileInput"
+                                    placeholder="Your file name">
+                            </div>
+                        </div>
 
-                <!-- <label>Input Text Format:</label>
-                <input type="radio" value="Base64" name="5">Base64
-                <input type="radio" value="Hex" name="6">Hex -->
+                    </div>
+                </div>
             </form>
+
             <div class="form-group">
                 <label for="dmode">Select Mode</label>
-                <select class="form-control input-lg" id="dmode">
+                <select class="form-control input-lg input-general" id="dmode">
                     <option value="ECB" selected="">ECB</option>
                     <option value="CBC">CBC</option>
+                    <option value="CFB">CFB</option>
+                    <option value="OFB">OFB</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="dkeysize">Key Size in Bits</label>
-                <select class="form-control input-lg" id="dkeysize">
+                <select class="form-control input-lg input-general" id="dkeysize">
                     <option value="128" selected="">128</option>
                     <option value="192">192</option>
                     <option value="256">256</option>
@@ -105,22 +135,24 @@
 
             <div class="form-group">
                 <label for="decryptivinput">Enter IV Used During Encryption(Optional)</label>
-                <input class="form-control input-lg" id="decryptivinput" placeholder="Enter initialization vector"
-                    name="decryptiv">
+                <input class="form-control input-lg input-general" id="decryptivinput"
+                    placeholder="Enter initialization vector" name="decryptiv">
             </div>
             <div class="form-group">
                 <label for="secretkey">Enter Secret Key</label>
-                <input class="form-control input-lg" id="dsecretkey" placeholder="Enter secret key" name="secretkey">
+                <input class="form-control input-lg input-general" id="dsecretkey" placeholder="Enter secret key"
+                    name="secretkey">
             </div>
             <div class="form-group">
-                <button class="btn btn-primary" name="hash" value="hash">Decrypt
+                <button class="btn btn-primary btn-general" name="hash" value="hash"
+                    onclick="onDecryptHandler()">Decrypt
                 </button>
             </div>
 
             <div class="form-group">
                 <label for="doutputString">AES Decrypted Output:</label>
-                <textarea id="doutputString" class="form-control input-lg" placeholder="Decrypted text goes here"
-                    rows="5"></textarea>
+                <textarea id="doutputString" class="form-control input-lg input-general"
+                    placeholder="Decrypted text goes here" rows="3"></textarea>
             </div>
         </div>
 
