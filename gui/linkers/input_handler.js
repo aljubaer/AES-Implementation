@@ -1,6 +1,9 @@
+var elerem = require('electron').remote;
 var fs = require('fs');
 var ps = require("python-shell");
 var path = require("path");
+var dialog = elerem.dialog;
+var app = elerem.app
 
 var inputProperticsEncrytion = {
     message: "Self respect is something that you should never lose",
@@ -19,6 +22,7 @@ var inputProperticsDecrytion = {
     iv: inputProperticsEncrytion.iv
 };
 
+var enData = "", deData = "";
 
 function getInputFileForEncrypt() {
 
@@ -49,7 +53,7 @@ function getInputFileForEncrypt() {
 
             console.log("The file content is : " + data);
             inputProperticsEncrytion.message = data;
-            document.getElementById('enInputString').value = data;
+            //document.getElementById('enInputString').value = data;
         });
 
     }).catch(err => {
@@ -84,7 +88,7 @@ function onEncryptHandler() {
                     alert("An error ocurred reading the file :" + err.message);
                     return;
                 }
-
+                enData = data;
                 console.log("The file content is : " + data);
                 document.getElementById('outputString').value = data;
             });
@@ -121,7 +125,7 @@ function getInputFileForDecrypt() {
             }
 
             console.log("The file content is : " + data);
-            document.getElementById('dinputString').value = data;
+            //document.getElementById('dinputString').value = data;
             let fn = "aes_tmp.bin";
             fs.writeFile(fn, data, (err) => {
                 if (err) {
@@ -164,10 +168,50 @@ function onDecryptHandler() {
                     alert("An error ocurred reading the file :" + err.message);
                     return;
                 }
-
+                deData = data;
                 console.log("The file content is : " + data);
                 document.getElementById('doutputString').value = data;
             });
         });
     });
 }
+
+
+function fileSaveAsEn(remoteUrl){
+    const options = {
+        defaultPath: app.getPath('desktop'),
+        filters: [
+                    { name: 'Binary', extensions: ['bin'] }
+                ]
+      }
+      dialog.showSaveDialog(null, options, (path) => {
+        console.log(path);
+         fs.writeFile(path, enData, (err) => {
+            if (err) {
+               alert("An error ocurred creating the file " + err.message);
+            }
+        })
+    });
+}
+
+function fileSaveAsDe(remoteUrl){
+    const options = {
+        defaultPath: app.getPath('desktop'),
+        filters: [
+                    { name: 'Text', extensions: ['txt'] }
+                ]
+      }
+      dialog.showSaveDialog(null, options, (path) => {
+        console.log(path);
+         fs.writeFile(path, deData, (err) => {
+            if (err) {
+               alert("An error ocurred creating the file " + err.message);
+            }
+        })
+    });
+}
+
+function fileSaveAsComplete(err){
+    alert("done");
+}
+

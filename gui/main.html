@@ -22,10 +22,10 @@
             <form class="form">
                 <h2>AES Encryption </h2>
                 <div class="form-group">
-                    <label for="enInputString">Enter text to be Encrypted</label>
+                    <!-- <label for="enInputString">Enter text to be Encrypted</label>
                     <textarea id="enInputString" class="form-control input-lg input-general" rows="3"
                         placeholder="Enter plain text to hash" name="textToEncrypt"></textarea>
-                    OR<br>
+                    OR<br> -->
                     <!-- <input class="form-control input-lg" id="fileInput" type="file" name="fileInput"> -->
                     <div class="row">
                         <div class="col-md-3" style="padding-right: 0px">
@@ -83,6 +83,10 @@
                 <textarea id="outputString" class="form-control input-lg input-general" rows="3"
                     placeholder="Encrypted text goes here"></textarea>
             </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-general" name="enex" value="enex"
+                    onclick="fileSaveAsEn('encrypt.bin')">Export</button>
+            </div>
 
 
         </div>
@@ -91,10 +95,10 @@
             <form class="form">
                 <h2>AES Decryption </h2>
                 <div class="form-group">
-                    <label for="dinputString">Enter text to be Decrypted</label>
+                    <!-- <label for="dinputString">Enter text to be Decrypted</label>
                     <textarea id="dinputString" class="form-control input-lg input-general" rows="3"
                         placeholder="Enter text to Decrypt" name="textToDecrypt"></textarea>
-                    OR<br>
+                    OR<br> -->
                     <!-- <input class="form-control input-lg" id="dfileInput" type="file" name="dfileInput" -->
                     <div class="row">
                         <div class="col-md-3" style="padding-right: 0px">
@@ -154,6 +158,12 @@
                 <textarea id="doutputString" class="form-control input-lg input-general"
                     placeholder="Decrypted text goes here" rows="3"></textarea>
             </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary btn-general" name="enex" value="enex"
+                    onclick="fileSaveAsDe('decrypt.txt')">Export</button>
+            </div>
+
         </div>
 
         <div class="col-md-1">
