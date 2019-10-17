@@ -18,7 +18,7 @@ function createWindow() {
     win.loadFile("main.html");
 
     // Open the DevTools.
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools();
     win.removeMenu();
 
     // Emitted when the window is closed.

@@ -77,7 +77,7 @@ function onEncryptHandler() {
         }
 
         var options = {
-            scriptPath: path.join(__dirname, '/../engine/')
+            scriptPath: path.join(__dirname, '/engine/')
         };
 
         ps.PythonShell.run('aes_encrypt.py', options, function (err, results) {
@@ -157,7 +157,7 @@ function onDecryptHandler() {
         }
 
         var options = {
-            scriptPath: path.join(__dirname, '/../engine/')
+            scriptPath: path.join(__dirname, '/engine/')
         };
 
         ps.PythonShell.run('aes_decrypt.py', options, function (err, results) {
